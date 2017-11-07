@@ -1,67 +1,55 @@
-#initial: choose library to test rnorm
-library(nortest);
-#get 1000 random values
-RandomValue = rnorm(1000);
-#check with different test
-# Lilliefors (Kolmogorov-Smirnov) normality test
-lillie.test(RandomValue);
-# Anderson-Darling normality test
-ad.test(RandomValue);
-# Pearson chi-square normality test
-pearson.test(RandomValue);
-# Cramer-von Mises normality test
-cvm.test(RandomValue);
+#Lab 1
 
-#get Hist of random values:
-dev.new();
-hist(RandomValue);
 
-# Task2
-#  Subtask a:
-RandomLaw1 = integer();
-RandomLaw2 = integer();
-i = 0;
-repeat
-{
-	RandomLaw1[i] = sqrt(-2*log(runif(1))) * sin(2*pi*runif(1));
-	RandomLaw2[i] = sqrt(-2*log(runif(1))) * cos(2*pi*runif(1));
-	i = i + 1;
-	if(i > 1000)
-	{
-		break;
-	}
+# Task 4: individual. var 8
+#RVals1 = array(c(runif(10000, 0, 14), runif(10000, 0, 2)), c(5000, 2));
+N = 100000;
+RIntX = runif(N, 0, 2);
+RIntY = runif(N, 0, 14);
+
+ctr = 0;
+for (i in 1:N) {
+    if (RIntY[i] <= RIntX[i] * ((RIntX[i] ^ 3) - 1)) {
+        ctr = ctr + 1;
+    }        
 }
-dev.new();
-hist(RandomLaw1);
-lillie.test(RandomLaw1);
-ad.test(RandomLaw1);
-pearson.test(RandomLaw1);
-cvm.test(RandomLaw1);
 
-dev.new();
-hist(RandomLaw2);
-lillie.test(RandomLaw2);
-ad.test(RandomLaw2);
-pearson.test(RandomLaw2);
-cvm.test(RandomLaw2);
+print(ctr / N * 14 * 2);
+# expected result 22/5 = 4.4 (WolframAlpha)
 
-#  Subtask b:
-RandomLawBN = integer();
-i = 0;
-j = 0;
-#change N to check different results and compare with task 1;
-N = 48;
-temp = 0;
-for (i in 0:999) {
-    for (j in 1:N) {
-        temp = temp + runif(1) - 0.5;
+#integral 2:
+N = 100000;
+RIntX1 = runif(N, 0, pi / 3);
+RIntX2 = runif(N, pi / 3, pi / 2);
+RIntY1 = runif(N, 0, 3);
+RIntY2 = runif(N, -pi - 1, 0);
+ctr1 = 0;
+ctr2 = 0;
+for (i in 1:N) {
+    if (RIntY1[i] <= (2 * RIntX1[i] + 1) * sin(RIntX1[i] * 3)) {
+        ctr1 = ctr1 + 1;
     }
-    RandomLawBN[i] = temp * sqrt(12 / N);
-    temp = 0;
+    if (RIntY2[i] >= (2 * RIntX2[i] + 1) * sin(RIntX2[i] * 3)) {
+        ctr2 = ctr2 + 1;
+    }
 }
-dev.new();
-hist(RandomLawBN);
-lillie.test(RandomLawBN);
-ad.test(RandomLawBN);
-pearson.test(RandomLawBN);
-cvm.test(RandomLawBN);
+
+square1 = ctr1 / N * pi;
+square2 = ctr2 / N * pi / 6 * (pi + 1);
+# Expected result 1/9 = 0.111 acording to WolframAlpha
+print(square1 - square2);
+
+#Integral 3 ***ASK***
+
+#TASK 5
+#needed area drawn on paper
+RIntX = runif(N, -1, 1);
+RIntY = runif(N);
+ctr = 0;
+for (i in 1:N) {
+    if ((RIntY[i] <= (-(RIntX[i] ^ 2) + 1)) && (RIntY[i] >= (RIntX[i] ^ 2))) {
+        ctr = ctr + 1;
+    }
+}
+# Expected result 2*sqrt(2)/3 = 0.942809 acording to WolframAlpha
+print(ctr / N * 2);
