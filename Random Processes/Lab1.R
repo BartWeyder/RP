@@ -1,4 +1,5 @@
 #Lab 1
+# Task 1: Check uniform distribution
 
 
 # Task 4: individual. var 8
