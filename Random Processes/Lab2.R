@@ -13,7 +13,6 @@ pearson.test(RandomValue);
 cvm.test(RandomValue);
 
 #get Hist of random values:
-dev.new();
 hist(RandomValue);
 
 # Task2
@@ -85,20 +84,54 @@ a_func = function(t_val) {
 get_realization = function(){
     result = c();
     time_value = 0;
-    for (i in 1:100) {
+    for (i in 1:101) {
         result[i] = a_func(time_value);
         time_value = time_value + 0.01;
     }
     return(result);
 }
 
+dev.new();
 realizations = list();
+t_vals = seq(0, 1, by = 0.01);
 for (i in 1:10) {
     realizations[[i]] = get_realization();
+    plot(t_vals, realizations[[i]], xlim = range(t_vals), ylim = range(realizations[[i]]), xlab = "t", ylab = "value",
+     main = "noise-less data", pch = 16, col = 10 * i);
+    lines(t_vals, realizations[[i]], xlim = range(t_vals), ylim = range(realizations[[i]]), pch = 16, col = 10 * i);
+    par(new = TRUE);
 }
 
-print(realizations);
-t_vals = seq(0, 1, by = 0.01);
-plot(t_vals, realizations[[1]], xlim = range(t_vals), ylim = range(realizations[[1]]), xlab = "t", ylab = "value",
-     main = "noise-less data", pch = 16);
-lines(t_vals, realizations[[1]], xlim = range(t_vals), ylim = range(realizations[[1]]), pch = 16);
+# Task 3
+#  Subtask b
+lambda_b = function(i_val) {
+    return(runif(1, i_val * pi(), (i_val + 1) * pi()));
+}
+b_func = function(t_val) {
+    result = c();
+    for (i in 1:N) {
+        result[i] = cos(lambda_b(i) * t_val) * runif(1) + sin(lambda_b(i) * t_val) * runif(1);
+    }
+    return(sum(result));
+}
+
+get_realization_b = function() {
+    result = c();
+    time_value = 0;
+    for (i in 1:101) {
+        result[i] = b_func(time_value);
+        time_value = time_value + 0.01;
+    }
+    return(result);
+}
+
+dev.new();
+realizations_b = list();
+for (i in 1:10) {
+    realizations_b[[i]] = get_realization_b();
+    plot(t_vals, realizations_b[[i]], xlim = range(t_vals), ylim = range(realizations_b[[i]]), xlab = "t", ylab = "value",
+     main = "noise-less data", pch = 16, col = 10 * i);
+    lines(t_vals, realizations_b[[i]], xlim = range(t_vals), ylim = range(realizations_b[[i]]), pch = 16, col = 10 * i);
+    par(new = TRUE);
+}
+
