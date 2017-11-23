@@ -65,3 +65,39 @@ lillie.test(RandomLawBN);
 ad.test(RandomLawBN);
 pearson.test(RandomLawBN);
 cvm.test(RandomLawBN);
+
+# Task 3
+sgma = function(i_val) {
+    return (1 / ((pi + i ^ 2) ^ 2));
+}
+N = 8000;
+#  Subtask a:
+lambda_a = function(i_val) {
+    return(i_val * pi);
+}
+a_func = function(t_val) {
+    result = c();
+    for (i in 1:N) {
+        result[i] = cos(lambda_a(i) * t_val) * runif(1) + sin(lambda_a(i) * t_val) * runif(1);
+    }
+    return(sum(result));
+}
+get_realization = function(){
+    result = c();
+    for (i in 1:1000) {
+        t_vector = seq(0, 1, by = 0.01);
+        result[i] = a_func(t_vector[i]);
+    }
+    return(result);
+}
+
+realizations = list();
+for (i in 1:10) {
+    realizations[[i]] = get_realization();
+}
+
+print(realizations);
+t_vals = seq(0, 1, by = 0.01);
+plot(t_vals, realizations[[1]], xlim = range(t_vals), ylim = range(realizations[[1]]), xlab = "t", ylab = "value",
+     main = "noise-less data", pch = 16);
+lines(t_vals, realizations[[1]], xlim = range(t_vals), ylim = range(realizations[[1]]), pch = 16);

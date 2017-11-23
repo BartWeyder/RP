@@ -6,16 +6,12 @@ p = array(c(p1, p2, p3, p4), dim = c(4, 4));
 p0 = c(0.25, 0.25, 0.25, 0.25);
 get_row = function(arg) {
     rand = runif(1);
-    #print(rand);
     new_arg = 0;
     for (i in 1:4) {
         new_arg = new_arg + arg[i];
         if (rand <= new_arg)
             return (i);
     }
-    
-    
-    
 }
 
 result = c(0, 0, 0, 0);

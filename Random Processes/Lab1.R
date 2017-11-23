@@ -1,6 +1,41 @@
 #Lab 1
 # Task 1: Check uniform distribution
+mn = runif(1000, 0, 1);
+R = max(mn) - min(mn);
+k = 10;
+dx = R / k;
+n = c();
+v = c();
+vt = c();
+for (i in 1:k) {
+    n[i] = length(mn[mn >= min(mn) + (i - 1) * dx & mn <= (min(mn) + i * dx)]);
+    v[i] = n[i] / 1000;
+    vt[i] = ((v[i] - dx) ^ 2) / dx;
+}
+sum(n);
+sum(v);
 
+xi2 = sum(vt);
+Xi2 = qchisq(p = 0.95, df = 7);
+
+if (xi2 > Xi2) { print("Reject the hypothesis"); } else { print("No reason to reject the hypothesis"); }
+hist(mn, col = "lightblue");
+
+# Task 2: check exponential distribution
+library(exptest);
+mn = rexp(1000);
+ks.exp.test(mn);
+lorenz.exp.test(mn);
+dev.new();
+hist(mn, col = "green");
+
+# Task 3
+for (i in 1:100) {
+    x <- runif(1000);
+    n[i] = max(x);
+}
+dev.new();
+hist(n, col = "red");
 
 # Task 4: individual. var 8
 #RVals1 = array(c(runif(10000, 0, 14), runif(10000, 0, 2)), c(5000, 2));
@@ -40,7 +75,8 @@ square2 = ctr2 / N * pi / 6 * (pi + 1);
 # Expected result 1/9 = 0.111 acording to WolframAlpha
 print(square1 - square2);
 
-#Integral 3 ***ASK***
+#Integral 3
+#analyticaly this integral = infinity
 
 #TASK 5
 #needed area drawn on paper
