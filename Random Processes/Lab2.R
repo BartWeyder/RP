@@ -84,9 +84,10 @@ a_func = function(t_val) {
 }
 get_realization = function(){
     result = c();
-    for (i in 1:1000) {
-        t_vector = seq(0, 1, by = 0.01);
-        result[i] = a_func(t_vector[i]);
+    time_value = 0;
+    for (i in 1:100) {
+        result[i] = a_func(time_value);
+        time_value = time_value + 0.01;
     }
     return(result);
 }
