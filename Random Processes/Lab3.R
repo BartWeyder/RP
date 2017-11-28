@@ -47,18 +47,45 @@ title(main = "Poisson process realizations", cex.main = 1.9);
 # Task3
 #  Subtask 1:
 dev.new();
+intervals = rexp(1000, lambda);
 hist(intervals);
 
 
 #  Subtask 2:
 dev.new();
-hist(average_k_time);
+process_vals = rexp(6000, lambda);
+every_k_time = c();
+for (i in 1:1000) {
+    k_sum = 0;
+    lower_lim = (i - 1) * 6 + 1;
+    upper_lim = lower_lim + 5;
+    for (j in lower_lim:upper_lim) {
+        k_sum = k_sum + process_vals[j];
+    }
+    every_k_time[i] = k_sum;
+}
+hist(every_k_time);
 
 
 #  Subtask 3:
-dev.new();
-average_time_for_n = c();
-for (i in 1:11) {
-    average_time_for_n[i] = realizations[[i]][n];
+mid_time = 21 * 1 / lambda;
+is_done = 0;
+time_values = c();
+for (i in 1:1000) {
+    current_time = 0;
+    for (j in 1:21) {
+        current_time = current_time + rexp(1, lambda);
+    }
+    time_values[i] = current_time;
+    if (current_time <= mid_time) {
+        is_done[i] = 1;
+    }
+    else {
+        is_done[i] = 0;
+    }
 }
-hist(average_time_for_n);
+
+dev.new();
+hist(time_values);
+dev.new();
+hist(is_done);

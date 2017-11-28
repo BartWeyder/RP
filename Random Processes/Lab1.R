@@ -12,8 +12,8 @@ for (i in 1:k) {
     v[i] = n[i] / 1000;
     vt[i] = ((v[i] - dx) ^ 2) / dx;
 }
-sum(n);
-sum(v);
+print(sum(n));
+print(sum(v));
 
 xi2 = sum(vt);
 Xi2 = qchisq(p = 0.95, df = 7);
