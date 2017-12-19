@@ -53,11 +53,10 @@ for (i in 1:6) {
 }
 
 nodes = seq(1, 5, 1);
-
 for (i in 1:6) {
-    par(new = TRUE);
     plot(seq(1, 10, 1), absorb_realization[[i]], xlim = range(seq(1, 10, 1)), ylim = c(1, 5), xlab = "Step", ylab = "Status (node)",
      main = "Absorbation realization (6 pieces)", pch = 16, col = 10 * i);
+    dev.new();
 }
 
 # Task 2
@@ -124,4 +123,8 @@ for (i in 1:realizations_amount) {
         }
         counter = counter + 1;
     }
+}
+
+for (i in 1:4) {
+    print(mean(vals_table[, i]));
 }
