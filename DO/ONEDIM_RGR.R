@@ -1,3 +1,5 @@
+source("ONEDIM.R")
+
 for (i in 1:4) {
     S = get_S();
     if (i == 1) {
