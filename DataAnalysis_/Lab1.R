@@ -1,5 +1,5 @@
 N = 1000;
-Population = runif(N, 18, 68);
+Population = runif(N, 29, 90);
 M = 100;
 X = c();
 j = 1;
@@ -7,6 +7,8 @@ for (i in 1:M) {
     X[i] = Population[j];
     j = j + 10;
 }
+
+X = sample(Population, M);
 
 # Task A
 print("Population Mean:");
@@ -21,6 +23,7 @@ for (i in 1:M) {
     Y = Y + X[i] / M;
 }
 Y = N * Y;
+print("Sum X:")
 print(Y);
 
 # mean X
