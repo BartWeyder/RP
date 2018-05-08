@@ -1,3 +1,4 @@
+library(graphics);
 a = 0.95;
 n = 1000;
 delta = 0.95;
@@ -11,7 +12,7 @@ for (i in 1:n) {
     y[i] = N * runif(1) * x[i] + NG * runif(1) + N;
 }
 
-# checking ejections
-for (i in 1:n) {
-
-}
+z = lm(y ~ x);
+#summary(z)
+plot(x, y)
+abline(z)

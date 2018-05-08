@@ -1,5 +1,5 @@
 library(numDeriv);
-#source("ONEDIM.R");
+
 x0 = c(-1.2 * 8 - 5, -1.2 * 8 - 5);
 x_values = list();
 f_values = c();
@@ -23,7 +23,7 @@ A[[k]] = matrix(
     c(
         1, 0,
         0, 1
-        ),
+    ),
     nrow = 2, ncol = 2, TRUE
 );
 
