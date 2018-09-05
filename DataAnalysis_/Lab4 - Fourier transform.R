@@ -5,9 +5,9 @@ n = NG / 4;
 N = 2 ^ n;
 
 i = c(1:N)
-S2 = 2 * runif(1) + NG * cos(2*M*pi*i/N)*(1 + 0.1*runif(1)) +
-  17 * cos(4 * M * pi * i / N + runif(1)) + 3 * cos(5*M*pi*i/N) * 
-  (runif(1) + NG);
+S2 = 2 * runif(1) + NG * cos(2 * M * pi * i / N) * (1 + 0.1 * runif(1)) +
+    17 * cos(4 * M * pi * i / N + runif(1)) + 3 * cos(5 * M * pi * i / N) *
+    (runif(1) + NG);
 
 # va = 0.42 - 0.5 * cos(2 * pi * i / N) + 0.08 * sin(4 * pi * i / N);
 # S1 = S2 * va;
@@ -58,8 +58,8 @@ for(k in i_)
 }
 dl = head(dl, -1);
 
-ggplot() + geom_line(aes(y = dl, x = 1:length(dl)), col = "blue") + 
-  geom_line(aes(y = dl_1, x = 1:length(dl_1)), col = "red") +
-  geom_line(aes(y = dl_2, x = 1:length(dl_2)), col = "green")
+ggplot() + geom_line(aes(y = dl, x = 1:length(dl)), col = "blue") 
+  #geom_line(aes(y = dl_1, x = 1:length(dl_1)), col = "red") +
+  #geom_line(aes(y = dl_2, x = 1:length(dl_2)), col = "green")
 
-dl_fast = fft(S1)
+#dl_fast = fft(S1)

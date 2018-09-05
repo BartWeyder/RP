@@ -9,6 +9,8 @@ Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "DO", "DO\DO.rxproj", "{C916
 EndProject
 Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "DataAnalysis_", "DataAnalysis_\DataAnalysis_.rxproj", "{A1BB3DC7-A801-457D-9290-922897CCA18D}"
 EndProject
+Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "AI", "AI\AI.rxproj", "{BC69B5BB-B6C7-4D08-B871-A20B39928D5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A1BB3DC7-A801-457D-9290-922897CCA18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1BB3DC7-A801-457D-9290-922897CCA18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1BB3DC7-A801-457D-9290-922897CCA18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC69B5BB-B6C7-4D08-B871-A20B39928D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC69B5BB-B6C7-4D08-B871-A20B39928D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC69B5BB-B6C7-4D08-B871-A20B39928D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC69B5BB-B6C7-4D08-B871-A20B39928D5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

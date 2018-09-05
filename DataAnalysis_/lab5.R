@@ -1,4 +1,5 @@
 library(ggplot2)
+library(rgl)
 
 NG = 52
 n = NG / 8
@@ -42,8 +43,6 @@ W = function(l, j)
   for(i in 0:(N-1))
   {
     temp[i + 1] = s1[i + 1] * f2(l, j, i)
-    
-    # print(temp[i])
   }
   return(sum(temp))
 }
