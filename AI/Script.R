@@ -1,10 +1,10 @@
 # generated values
-x = 0.1658833
-y_expected = 0.913274
+x = 3
+y_expected = 0.5
 # possible fault value
-max_fault = 0.05
+max_fault = 0.1
 # generating first weight
-w0 = runif(1, 0, 0.001)
+w0 = 0.1
 #iterator 
 i = 1
 # calc functions
